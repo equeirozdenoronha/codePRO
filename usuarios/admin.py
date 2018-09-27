@@ -10,5 +10,8 @@ class CustomUserAdmin(UserAdmin):
     form = UsuarioChangeForm
     model = Usuario
     list_display = ['email', 'username', 'nome']
+    search_fields = ('nome', 'email')
+    list_filter = ('nome', 'email')
+    list_per_page = 30
 
 admin.site.register(Usuario, CustomUserAdmin)

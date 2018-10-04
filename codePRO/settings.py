@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'rest_auth.registration',
@@ -95,13 +95,23 @@ WSGI_APPLICATION = 'codePRO.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
+DATABASES = {
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd7683r09msvnrb',
+        'USER': 'cousydxrwlkvbm',
+        'PASSWORD': '48fe8b4509862026225ee971ecad59120e96ebd6fdb9229c7a90bd61b8f5ff33',
+        'HOST': 'ec2-54-235-90-0.compute-1.amazonaws.com',
+        'PORT': 5432,
+    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

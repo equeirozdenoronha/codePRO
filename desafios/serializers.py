@@ -5,7 +5,7 @@ class AcademicoSerializer(serializers.Serializer):
 
     id = serializers.IntegerField()
     usuario = serializers.SlugRelatedField(read_only=True, slug_field="nome")
-    pontuacao = serializers.PositiveIntegerField()
+    pontuacao = serializers.IntegerField()
 
 
     def create(self, validated_data):

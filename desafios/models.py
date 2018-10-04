@@ -5,6 +5,7 @@ from usuarios.models import *
 
 class Academico(models.Model):
 
+    CGU = models.CharField(max_length=9, null=True)
     usuario = models.OneToOneField(Usuario, on_delete=models.CASCADE)
     pontuacao = models.IntegerField(null=True)
 
@@ -16,6 +17,7 @@ class Academico(models.Model):
         return "{} ({})".format(self.usuario.nome.upper(), self.usuario.email)
 
 class Pergunta(models.Model):
+
     FACIL = 1
     MEDIA = 2
     DIFICIL = 3
@@ -25,10 +27,11 @@ class Pergunta(models.Model):
         (MEDIA, ('Média')),
         (DIFICIL, ('Difícil')),
     )
-    A = 'A'
-    B = 'B'
-    C = 'C'
-    D = 'D'
+
+    A = "A"
+    B = "B"
+    C = "C"
+    D = "D"
     ALTERNATIVAS = (
         (A, 'A'),
         (B, 'B'),
@@ -36,12 +39,12 @@ class Pergunta(models.Model):
         (D, 'D'),
     )
     codigo = models.UUIDField(default=uuid.uuid4, primary_key=True)
-    enunciado = models.CharField(max_length=1000, null=True)
-    alternativaA = models.CharField(max_length=500, null=True)
-    alternativaB = models.CharField(max_length=500, null=True)
-    alternativaC = models.CharField(max_length=500, null=True)
-    alternativaD = models.CharField(max_length=500, null=True)
-    alternativa_certa = models.CharField(max_length=5, choices=ALTERNATIVAS)
+    enunciado = models.TextField(max_length=1000, null=True)
+    alternativaA = models.TextField(max_length=500, null=True)
+    alternativaB = models.TextField(max_length=500, null=True)
+    alternativaC = models.TextField(max_length=500, null=True)
+    alternativaD = models.TextField(max_length=500, null=True)
+    alternativa_certa = models.CharField(max_length=2, choices=ALTERNATIVAS)
     nivel = models.IntegerField(choices=NIVEL, default=FACIL)
 
     class Meta:
@@ -49,7 +52,7 @@ class Pergunta(models.Model):
 
     def __str__(self):
 
-        return "{} ({})".format(self.descricao.upper())
+        return "{}".format(self.enunciado)
 
 class Resposta(models.Model):
 
